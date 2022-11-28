@@ -2,7 +2,7 @@
 Summary: A desktop recorder
 Name: byzanz
 Version: 0.3
-Release: 0.24
+Release: 0.25
 License: GPLv3+
 URL: http://git.gnome.org/browse/byzanz/
 #Source0: http://download.gnome.org/sources/%{name}/0.2/%{name}-%{version}.tar.bz2
@@ -28,7 +28,7 @@ A command-line recording tool is included.
 %build
 ./autogen.sh
 CFLAGS="%optflags -Wno-deprecated-declarations"
-%ifarch armv7l armv7hl armv7hnl
+%ifarch armv7l armv7hl armv7hnl riscv64
 # http://rwmj.wordpress.com/2014/01/06/alignment-errors-on-fedora-arm/
 CFLAGS="$CFLAGS -Wno-cast-align"
 %endif
@@ -52,6 +52,9 @@ make DESTDIR=%{buildroot} install
 %{_mandir}/man1/byzanz-record.1*
 
 %changelog
+* Thu Nov 24 2022 misaka00251 <liuxin@iscas.ac.cn> - 0.3-0.25
+- Fix riscv64 support
+
 * Fri May 07 2021 weidong <weidong@uniontech.com> - 0.3-0.24
 - Initial package.
 
